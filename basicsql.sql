@@ -59,7 +59,7 @@ DATA TYPES                         SIZE IN BYTES
  char vs varchar 
  >> char allocates memory while declaring  ,
  >> varchar uses dynamic memory allocation as user gives input it will allocates memory 
-
+=======================================================================================
 ----------------------------------------------------------------------  
   dml  --------- >data modification lang
   dql  -------- >>data query lang
