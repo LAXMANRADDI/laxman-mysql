@@ -4,6 +4,8 @@ rdbms --> relational database management system
 se --> storage engine // compiler
  --------------------------------------------------------------------------------- since mysql did not have gui  we r using mysql workbench for practicing ---------------------------------------------
  available data types in my sql 
+
+ 
 •int
  •smallint
  •bigint
