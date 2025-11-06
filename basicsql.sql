@@ -143,8 +143,10 @@ CREATE TABLE Employees (
     joining_date DATE DEFAULT GETDATE()
 );
 
+8] add constraint : Add Constraint to an Existing Table
 
-
+ALTER TABLE Employees
+ADD CONSTRAINT unique_email UNIQUE (email);
 
 
 
