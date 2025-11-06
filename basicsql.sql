@@ -98,6 +98,15 @@ CREATE TABLE Employees (
     name VARCHAR(50)
 );
 
+4] copmosite key :
+
+CREATE TABLE Orders (
+    order_id INT,
+    product_id INT,
+    PRIMARY KEY (order_id, product_id)
+);
+
+
 
 
 
