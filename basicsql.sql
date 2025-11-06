@@ -125,8 +125,7 @@ CREATE TABLE Employees (
 );
 
 
-6] check constraint:
-Ensures a column's value meets a specific condition.
+6] check constraint: Ensures a colum's value meets a specific condition.
 
 CREATE TABLE Employees (
     emp_id INT PRIMARY KEY,
@@ -135,8 +134,14 @@ CREATE TABLE Employees (
 );
 
 
+7] default key : Sets a default value if no value is provided.
 
-
+CREATE TABLE Employees (
+    emp_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    city VARCHAR(50) DEFAULT 'Unknown',
+    joining_date DATE DEFAULT GETDATE()
+);
 
 
 
