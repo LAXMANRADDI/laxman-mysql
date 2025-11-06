@@ -109,6 +109,20 @@ CREATE TABLE Orders (
 
 
 
+5] foreign key : Links one table to another using a reference key.
+
+ 
+CREATE TABLE Departments (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(50)
+);
+
+CREATE TABLE Employees (
+    emp_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES Departments(dept_id)
+);
 
 
 
