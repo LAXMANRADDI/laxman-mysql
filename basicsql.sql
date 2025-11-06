@@ -89,8 +89,14 @@ CREATE TABLE Employees (
     email VARCHAR(100) UNIQUE
 );
 
-3]
+3]primary key :
+ Uniquely identifies each record in a table.
+ Combines NOT NULL and UNIQUE.
 
+CREATE TABLE Employees (
+    emp_id INT PRIMARY KEY,
+    name VARCHAR(50)
+);
 
 
 
