@@ -160,5 +160,8 @@ a] select  clauses:Selects specific columns from a table.
 
 
 
+b] from clauses:Specifies the table to retrieve data from.
+
+SELECT * FROM Employees;
 
  
