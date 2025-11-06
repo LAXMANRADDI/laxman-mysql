@@ -125,7 +125,7 @@ CREATE TABLE Employees (
 );
 
 
-6] check constraint: Ensures a colum's value meets a specific condition.
+6] check constraint:
 
 CREATE TABLE Employees (
     emp_id INT PRIMARY KEY,
@@ -152,6 +152,10 @@ ADD CONSTRAINT unique_email UNIQUE (email);
 
 
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+a] select  clauses:Selects specific columns from a table. 
+  
+ SELECT name, age FROM Students;
 
 
 
