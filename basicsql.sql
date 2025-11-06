@@ -81,8 +81,15 @@ CREATE TABLE Students (
 );
 
 
+2] unoque constraints :Ensures all values in the column are different
 
 
+CREATE TABLE Employees (
+    emp_id INT UNIQUE,
+    email VARCHAR(100) UNIQUE
+);
+
+3]
 
 
 
