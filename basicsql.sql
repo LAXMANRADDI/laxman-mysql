@@ -125,6 +125,14 @@ CREATE TABLE Employees (
 );
 
 
+6] check constraint:
+Ensures a column's value meets a specific condition.
+
+CREATE TABLE Employees (
+    emp_id INT PRIMARY KEY,
+    age INT CHECK (age >= 18),
+    salary DECIMAL(10,2) CHECK (salary > 0)
+);
 
 
 
