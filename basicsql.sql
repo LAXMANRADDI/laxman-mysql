@@ -69,7 +69,17 @@ DATA TYPES                         SIZE IN BYTES
 
  
 
-simple table creation and table operations 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+constraint in my sql 
+ 1] not null :Ensures that the column will not accept NULL values.
+
+
+ 
+CREATE TABLE Students (
+    student_id INT NOT NULL,
+    name VARCHAR(50) NOT NULL
+);
+
 
 
 
