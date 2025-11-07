@@ -178,3 +178,10 @@ SELECT department, COUNT(emp_id) AS total_employees
 FROM Employees
 GROUP BY department;
 
+e]having c;ause :
+ Filters groups (unlike WHERE, which filters rows).
+
+SELECT department, AVG(salary) AS avg_salary
+FROM Employees
+GROUP BY department
+HAVING AVG(salary) > 40000;
