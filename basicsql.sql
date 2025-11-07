@@ -200,3 +200,12 @@ LIMIT 5;
 
 -- SQL Server
 SELECT TOP 5 * FROM Employees;
+
+
+
+h]join clause :
+ Used to combine data from two or more tables.
+ SELECT Employees.name, Departments.dept_name
+FROM Employees
+JOIN Departments
+ON Employees.dept_id = Departments.dept_id;
