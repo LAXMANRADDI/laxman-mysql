@@ -192,3 +192,11 @@ f]order by clause :
  SELECT * FROM Employees
 ORDER BY salary DESC;
 
+g]limit/ top  clause 
+
+-- MySQL / PostgreSQL
+SELECT * FROM Employees
+LIMIT 5;
+
+-- SQL Server
+SELECT TOP 5 * FROM Employees;
