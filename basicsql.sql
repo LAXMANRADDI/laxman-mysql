@@ -162,6 +162,13 @@ a] select  clauses:Selects specific columns from a table.
 
 b] from clauses:Specifies the table to retrieve data from.
 
-SELECT * FROM Employees;
+SELECT * FROM Employees; 
+
+
+c] where clause:
+ Filters rows based on a condition.
+SELECT * FROM Employees
+WHERE salary > 30000;
+
 
  
