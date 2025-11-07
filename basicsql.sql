@@ -184,4 +184,11 @@ e]having c;ause :
 SELECT department, AVG(salary) AS avg_salary
 FROM Employees
 GROUP BY department
-HAVING AVG(salary) > 40000;
+HAVING AVG(salary) > 40000; 
+
+
+f]order by clause :
+ Sorts the result in ascending (ASC) or descending (DESC) order.
+ SELECT * FROM Employees
+ORDER BY salary DESC;
+
