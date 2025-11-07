@@ -209,3 +209,14 @@ h]join clause :
 FROM Employees
 JOIN Departments
 ON Employees.dept_id = Departments.dept_id;
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+order of execution 
+
+SELECT column1, column2       -- 5
+FROM table_name               -- 1
+WHERE condition               -- 2
+GROUP BY column_name          -- 3
+HAVING group_condition        -- 4
+ORDER BY column_name;         -- 6
