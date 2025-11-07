@@ -171,4 +171,10 @@ SELECT * FROM Employees
 WHERE salary > 30000;
 
 
- 
+ d] group by clause:
+  Groups rows and is often used with aggregate functions like COUNT(), SUM(), AVG(), etc.
+
+SELECT department, COUNT(emp_id) AS total_employees
+FROM Employees
+GROUP BY department;
+
