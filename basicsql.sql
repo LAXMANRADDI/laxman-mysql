@@ -210,6 +210,16 @@ FROM Employees
 JOIN Departments
 ON Employees.dept_id = Departments.dept_id;
 
+example :
+ SELECT department, COUNT(emp_id) AS total_employees
+FROM Employees
+WHERE salary > 30000
+GROUP BY department
+HAVING COUNT(emp_id) >= 3
+ORDER BY total_employees DESC
+LIMIT 5;
+
+
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 order of execution 
