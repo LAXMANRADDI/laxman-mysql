@@ -240,6 +240,10 @@ The LIKE clause is used in a WHERE statement to search for a specific pattern in
 FROM table_name
 WHERE column_name LIKE pattern;
 
- example;; SELECT * FROM Students
-           WHERE name LIKE 'S%';
+ example;; name starts with s may contain any number of charecters 
+  SELECT * FROM Students
+  WHERE name LIKE 'S%';
 
+ex: name with exactly 4 charecters
+SELECT * FROM Students
+WHERE name LIKE '____';
