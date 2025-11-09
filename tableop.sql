@@ -32,3 +32,6 @@ ex:
 Applications
 Permanently remove unwanted tables or databases.
 Used in database cleanup or restructuring.
+
+
+3] updatae command:
