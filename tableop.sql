@@ -11,3 +11,8 @@ DELETE FROM table_name;
 ex:
 DELETE FROM Students;
 imp:[Deletes all records (table becomes empty), but table still exists.]
+
+
+Applications
+Remove specific old or invalid data (with WHERE)
+Empty table but keep structure for reuse (without WHERE)
