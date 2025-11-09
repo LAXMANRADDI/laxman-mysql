@@ -247,3 +247,11 @@ WHERE column_name LIKE pattern;
 ex: name with exactly 4 charecters
 SELECT * FROM Students
 WHERE name LIKE '____';
+
+g] not like ;
+To find records not matching a pattern:
+ 
+ex:
+ SELECT * FROM Students
+WHERE name NOT LIKE 'A%';
+for results with  all names not starting with 'A
