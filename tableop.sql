@@ -18,9 +18,17 @@ Remove specific old or invalid data (with WHERE)
 Empty table but keep structure for reuse (without WHERE)
 
 
-2] drop command:can be used to drop table or whole database 
+2.1] drop command:can be used to drop table or whole database 
   syntax:
 DROP TABLE table_name;
 ex:
   DROP TABLE Students;
-Deletes table Students completely (data + structure).
+*]Deletes table Students completely (data + structure).
+
+*]for droping database 
+  DROP DATABASE CollegeDB;
+
+
+Applications
+Permanently remove unwanted tables or databases.
+Used in database cleanup or restructuring.
