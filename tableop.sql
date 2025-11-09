@@ -1,4 +1,4 @@
-1] delete command:
+1] delete command with where conndition :
 syntax:
 DELETE FROM table_name WHERE condition;
 ex: to delete records of student with stdid = 5
