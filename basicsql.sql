@@ -230,3 +230,13 @@ WHERE condition               -- 2
 GROUP BY column_name          -- 3
 HAVING group_condition        -- 4
 ORDER BY column_name;         -- 6
+
+
+
+
+i] like clause:
+The LIKE clause is used in a WHERE statement to search for a specific pattern in a column
+ SELECT column_name
+FROM table_name
+WHERE column_name LIKE pattern;
+
