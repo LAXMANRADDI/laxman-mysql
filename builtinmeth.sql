@@ -76,3 +76,16 @@ d] related to numbers\
   `MOD(a, b)`    Remainder            `SELECT MOD(10, 3);` → `1`         
 `POW(a, b)`    Power                `SELECT POW(2, 3);` → `8`          
  `SQRT(x)`      Square root          `SELECT SQRT(16);` → `4`           
+
+ 
+ex: Functions used: ROUND(), CEIL()
+SELECT id, salary, 
+       ROUND(salary * 0.1, 2) AS Bonus, 
+       CEIL(salary * 1.05) AS New_Salary
+FROM employees;
+Output:
+id	salary	Bonus	New_Salary
+    1	50000	5000.00	52500
+    2	42000	4200.00	44100
+    3	31500	3150.00	33075
+
