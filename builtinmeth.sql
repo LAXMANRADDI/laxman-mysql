@@ -15,6 +15,16 @@ a] related to date and time function
  `SUBDATE(d, INTERVAL n DAY)`  Subtract n days                  `SELECT SUBDATE('2025-11-11', INTERVAL 5 DAY);` → `2025-11-06` 
  `DATE_FORMAT(date, format)`   Custom date formatting           `SELECT DATE_FORMAT(NOW(), '%d-%m-%Y');` → `11-11-2025`        
 
+  ex:
+  #CURDATE(), DAYNAME(), ADDDATE()
+  SELECT CURDATE() AS Today, 
+       DAYNAME(CURDATE()) AS Day_Name, 
+       ADDDATE(CURDATE(), INTERVAL 10 DAY) AS Future_Date;
+Output:
+             Today	Day_Name	Future_Date
+             2025-11-11	Tuesday	2025-11-21
+
+
 
 
   b] related to string
@@ -29,6 +39,18 @@ a] related to date and time function
  `LTRIM(str)`                     Remove left spaces        `SELECT LTRIM('  SQL');` → `SQL`                               
  `RTRIM(str)`                     Remove right spaces       `SELECT RTRIM('SQL  ');` → `SQL`                               
  `TRIM(str)`                      Remove both side spaces   `SELECT TRIM('  SQL  ');` → `SQL`                              
+
+
+  d] aggrigate functions 
+
+
+   Function   Description     Example                            
+ ---------  ---------------  ---------------------------------- 
+ `COUNT()`  Counts rows      `SELECT COUNT(*) FROM students;`   
+ `SUM()`    Sum of a column  `SELECT SUM(marks) FROM students;` 
+ `AVG()`    Average value    `SELECT AVG(marks) FROM students;` 
+ `MIN()`    Minimum value    `SELECT MIN(marks) FROM students;` 
+ `MAX()`    Maximum value    `SELECT MAX(marks) FROM students;` 
 
 
 
