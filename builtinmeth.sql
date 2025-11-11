@@ -1,4 +1,4 @@
- related to date and time function
+a] related to date and time function
  Function                      Description                      Example                                                        
  ----------------------------  -------------------------------  -------------------------------------------------------------- 
  `NOW()`                       Returns current date and time    `SELECT NOW();` → `2025-11-11 14:20:36`                        
@@ -14,3 +14,18 @@
  `ADDDATE(d, INTERVAL n DAY)`  Add n days to a date             `SELECT ADDDATE('2025-11-11', INTERVAL 5 DAY);` → `2025-11-16` 
  `SUBDATE(d, INTERVAL n DAY)`  Subtract n days                  `SELECT SUBDATE('2025-11-11', INTERVAL 5 DAY);` → `2025-11-06` 
  `DATE_FORMAT(date, format)`   Custom date formatting           `SELECT DATE_FORMAT(NOW(), '%d-%m-%Y');` → `11-11-2025`        
+
+
+
+  b] related to string
+ Function                         Description               Example                                                        
+ -------------------------------  ------------------------  -------------------------------------------------------------- 
+ `LENGTH(str)`                   Length of string         `SELECT LENGTH('MySQL');` → `5`                                |
+ `UPPER(str)`                     Convert to uppercase      `SELECT UPPER('mysql');` → `MYSQL`                             
+ `LOWER(str)`                     Convert to lowercase      `SELECT LOWER('MYSQL');` → `mysql`                             
+ `CONCAT(a, b, …)`                Join strings              `SELECT CONCAT('My', 'SQL');` → `MySQL`                        
+ `SUBSTRING(str, start, length)`  Extract part of a string  `SELECT SUBSTRING('Database', 1, 4);` → `Data`                 
+ `REPLACE(str, from, to)`         Replace substring         `SELECT REPLACE('Hello SQL', 'SQL', 'MySQL');` → `Hello MySQL` 
+ `LTRIM(str)`                     Remove left spaces        `SELECT LTRIM('  SQL');` → `SQL`                               
+ `RTRIM(str)`                     Remove right spaces       `SELECT RTRIM('SQL  ');` → `SQL`                               
+ `TRIM(str)`                      Remove both side spaces   `SELECT TRIM('  SQL  ');` → `SQL`                              
