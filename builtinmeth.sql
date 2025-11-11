@@ -64,6 +64,23 @@ Output:
  `MAX()`    Maximum value    `SELECT MAX(marks) FROM students;` 
 
 
+ex : Functions used: COUNT(), AVG(), MAX()
+ SELECT department,                #3
+       COUNT(*) AS Total_Employees, 
+       AVG(salary) AS Avg_Salary, 
+       MAX(salary) AS Max_Salary
+FROM employees #1 
+GROUP BY department; #2  
+
+
+Output:
+          department	Total_Employees	Avg_Salary	Max_Salary
+          HR        	5              	42000	      55000
+          IT	        8	              60000      	80000
+          Sales	     4              	39000      	45000
+
+
+
 
 d] related to numbers\
 
