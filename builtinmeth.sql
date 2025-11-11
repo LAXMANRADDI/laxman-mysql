@@ -29,3 +29,17 @@ a] related to date and time function
  `LTRIM(str)`                     Remove left spaces        `SELECT LTRIM('  SQL');` → `SQL`                               
  `RTRIM(str)`                     Remove right spaces       `SELECT RTRIM('SQL  ');` → `SQL`                               
  `TRIM(str)`                      Remove both side spaces   `SELECT TRIM('  SQL  ');` → `SQL`                              
+
+
+
+c] related to numbers\
+
+ Function       Description          Example                            
+ -------------  -------------------  ---------------------------------- 
+ `ABS(x)`       Absolute value       `SELECT ABS(-5);` → `5`            
+ `CEIL(x)`      Round up             `SELECT CEIL(4.2);` → `5`          
+ `FLOOR(x)`     Round down           `SELECT FLOOR(4.8);` → `4`         
+ `ROUND(x, d)`  Round to d decimals  `SELECT ROUND(5.678, 2);` → `5.68` 
+  `MOD(a, b)`    Remainder            `SELECT MOD(10, 3);` → `1`         
+`POW(a, b)`    Power                `SELECT POW(2, 3);` → `8`          
+ `SQRT(x)`      Square root          `SELECT SQRT(16);` → `4`           
