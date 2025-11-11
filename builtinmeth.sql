@@ -25,6 +25,18 @@ Output:
              2025-11-11	Tuesday	2025-11-21
 
 
+Code     Meaning           Example Output 
+ ----  ----------------  -------------- 
+ `%Y`  4-digit year      `2025`         
+ `%y` 2-digit year      `25`           
+ `%m`  2-digit month     `11`           
+ `%d`  2-digit day       `09`           
+ `%M`  Full month name   `November`     
+ `%b`  Short month name  `Nov`          
+`%W` Day name         `Tuesday`      
+ `%H`  Hour (00–23)      `14`           
+ `%i`  Minutes           `45`           
+ `%s`  Seconds           `30`           
 
 
   b] related to string
