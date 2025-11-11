@@ -41,7 +41,18 @@ Output:
  `TRIM(str)`                      Remove both side spaces   `SELECT TRIM('  SQL  ');` → `SQL`                              
 
 
-  d] aggrigate functions 
+ ex:   CONCAT(), UPPER(), LOWER(), REPLACE()
+ SELECT CONCAT(UPPER(first_name), ' ', LOWER(last_name)) AS FullName
+FROM employees
+WHERE REPLACE(department, 'Dept', '') = 'Sales';
+Output:
+  FullName
+  JOHN smith
+  MARY thomas
+
+
+
+  c] aggrigate functions 
 
 
    Function   Description     Example                            
@@ -54,7 +65,7 @@ Output:
 
 
 
-c] related to numbers\
+d] related to numbers\
 
  Function       Description          Example                            
  -------------  -------------------  ---------------------------------- 
