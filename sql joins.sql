@@ -41,4 +41,17 @@ ON s.dept_id = d.dept_id;
 -->If no match, dept_name becomes NULL.
 
 
+3] RIGHT JOIN (RIGHT OUTER JOIN)
+
+Opposite of left join.
+
+SELECT s.name, d.dept_name
+FROM students s
+RIGHT JOIN departments d
+ON s.dept_id = d.dept_id;
+
+-->Shows all departments even if no student belongs to that department.
+
+
+---
 
