@@ -61,3 +61,10 @@ Example
 UPDATE employees
 SET salary = 65000
 WHERE emp_id = 101;
+
+3.3] Update Multiple Columns
+
+UPDATE employees
+SET salary = 70000,
+    department = 'IT'
+WHERE emp_id = 102;
