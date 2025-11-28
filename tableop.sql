@@ -74,3 +74,11 @@ WHERE emp_id = 102;
 UPDATE users
 SET status = 'inactive'
 WHERE last_login < '2024-01-01';
+
+3.5]UPDATE Using AND / OR
+
+UPDATE students
+SET grade = 'A'
+WHERE marks > 90 AND attendance > 85;
+
+
