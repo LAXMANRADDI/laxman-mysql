@@ -68,3 +68,9 @@ UPDATE employees
 SET salary = 70000,
     department = 'IT'
 WHERE emp_id = 102;
+
+3.4] UPDATE Using Comparison Operators
+
+UPDATE users
+SET status = 'inactive'
+WHERE last_login < '2024-01-01';
