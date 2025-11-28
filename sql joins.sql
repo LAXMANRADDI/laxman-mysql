@@ -72,3 +72,13 @@ RIGHT JOIN departments d
 ON s.dept_id = d.dept_id;
 
 
+
+5] CROSS JOIN
+
+Returns all combinations (cartesian product).
+
+SELECT *
+FROM students
+CROSS JOIN departments;
+
+If 10 students × 3 depts → 30 rows.
