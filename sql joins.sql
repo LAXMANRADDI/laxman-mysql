@@ -15,3 +15,15 @@ Table: departments
 dept_id	dept_name
 10     	CSE
 20	     ECE
+
+
+1]INNER JOIN:
+
+Returns rows only when matching data exists in both tables.
+
+SELECT s.name, d.dept_name
+FROM students s
+INNER JOIN departments d
+ON s.dept_id = d.dept_id;
+
+-->Only matching dept_ids will appear.
