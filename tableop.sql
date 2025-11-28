@@ -90,3 +90,12 @@ SET status = 'archived'
 ORDER BY id
 LIMIT 50;
 
+3.7] UPDATE with Subquery
+
+UPDATE employees
+SET salary = salary + 2000
+WHERE dept_id = (
+    SELECT dept_id FROM departments WHERE name = 'Sales'
+);
+
+
