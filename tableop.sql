@@ -1,4 +1,4 @@
-1.1] delete command with where clause :
+81.1] delete command with where clause :
 syntax:
 DELETE FROM table_name WHERE condition;
 ex: to delete records of student with stdid = 5
@@ -81,4 +81,12 @@ UPDATE students
 SET grade = 'A'
 WHERE marks > 90 AND attendance > 85;
 
+3.6] UPDATE With ORDER BY + LIMIT
+
+Useful when updating in batches.
+
+UPDATE logs
+SET status = 'archived'
+ORDER BY id
+LIMIT 50;
 
