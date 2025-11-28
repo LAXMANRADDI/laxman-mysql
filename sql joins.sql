@@ -27,3 +27,18 @@ INNER JOIN departments d
 ON s.dept_id = d.dept_id;
 
 -->Only matching dept_ids will appear.
+
+
+2]LEFT JOIN (LEFT OUTER JOIN)
+
+Returns all rows from left table, plus matching rows from right.
+
+SELECT s.name, d.dept_name
+FROM students s
+LEFT JOIN departments d
+ON s.dept_id = d.dept_id;
+
+-->If no match, dept_name becomes NULL.
+
+
+
