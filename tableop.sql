@@ -35,3 +35,15 @@ Used in database cleanup or restructuring.
 
 
 3] updatae command:
+
+Basic UPDATE
+Updates specific columns.
+
+UPDATE table_name
+SET column1 = value1;
+
+Example:
+UPDATE employees
+SET salary = 50000;
+
+*]Updates salary for all employees.
