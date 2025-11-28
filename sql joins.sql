@@ -54,4 +54,21 @@ ON s.dept_id = d.dept_id;
 
 
 ---
+4] FULL OUTER JOIN
+
+*)Not directly supported in MySQL.
+We use UNION:
+
+SELECT s.*, d.*
+FROM students s
+LEFT JOIN departments d
+ON s.dept_id = d.dept_id
+
+UNION
+
+SELECT s.*, d.*
+FROM students s
+RIGHT JOIN departments d
+ON s.dept_id = d.dept_id;
+
 
