@@ -47,3 +47,17 @@ UPDATE employees
 SET salary = 50000;
 
 *]Updates salary for all employees.
+
+3.2]UPDATE With WHERE Condition
+
+Updates only selected rows.
+
+UPDATE table_name
+SET column1 = value1
+WHERE condition;
+
+Example
+
+UPDATE employees
+SET salary = 65000
+WHERE emp_id = 101;
