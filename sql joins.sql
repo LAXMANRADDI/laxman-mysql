@@ -82,3 +82,12 @@ FROM students
 CROSS JOIN departments;
 
 If 10 students × 3 depts → 30 rows.
+
+6]SELF JOIN
+
+A table joined with itself.
+
+SELECT e1.name AS employee, e2.name AS manager
+FROM employees e1
+JOIN employees e2
+ON e1.manager_id = e2.emp_id;
