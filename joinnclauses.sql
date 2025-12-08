@@ -166,3 +166,68 @@ FROM employees
 WHERE salary BETWEEN 50000 AND 65000;
 
 
+11. LIKE
+Pattern matching.
+SELECT *
+FROM employees
+WHERE name LIKE 'R%';
+12. AS (alias)
+
+Renames column/table.
+SELECT name AS employee_name
+FROM employees AS e;
+
+13. JOIN (with same table
+Let’s join employees table with a fake table:
+departments
+department	head
+IT	Arjun
+HR	Meena
+Sales	Priya
+Inner Join
+SELECT e.name, e.department, d.head
+FROM employees e
+JOIN departments d
+ON e.department = d.department;
+
+14. EXISTS
+Check if row exists in subquery.
+
+SELECT name
+FROM employees e
+WHERE EXISTS (
+    SELECT 1
+    FROM employees x
+    WHERE x.department = 'IT'
+);
+This will return all employees because IT exists.
+
+15. ANY / ALL
+ANY
+Salary greater than any IT employee (at least one).
+
+SELECT name
+FROM employees
+WHERE salary > ANY (
+    SELECT salary FROM employees WHERE department = 'IT'
+);
+ALL
+Salary greater than all IT employees.
+SELECT name
+FROM employees
+WHERE salary > ALL (
+    SELECT salary FROM employees WHERE department = 'IT'
+);
+
+16. UNION / UNION ALL
+UNION removes duplicates:
+SELECT department FROM employees
+UNION
+SELECT head FROM departments;
+
+UNION ALL keeps duplicates:
+SELECT department FROM employees
+UNION ALL
+SELECT head FROM departments;
+
+
