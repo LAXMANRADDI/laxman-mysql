@@ -127,3 +127,42 @@ GROUP BY department;
 
 Because name is not aggregated.
 MySQL may allow depending on mode, but considered WRONG
+
+6. HAVING
+Filters data after grouping.
+  
+SELECT department, AVG(salary)
+FROM employees
+GROUP BY department
+HAVING AVG(salary) > 55000;
+
+Error : HAVING used without GROUP BY:
+SELECT *
+FROM employees
+HAVING salary > 50000;
+This works in MySQL but is bad practice.
+
+7. LIMIT
+Restrict rows.
+SELECT *
+FROM employees
+LIMIT 2;
+
+8. DISTINCT
+Removes duplicate values.
+SELECT DISTINCT department
+FROM employees;
+
+9. IN / NOT IN
+Multiples values comparison.
+SELECT *
+FROM employees
+WHERE department IN ('IT', 'HR');
+
+10. BETWEEN
+Range-based filtering.
+SELECT *
+FROM employees
+WHERE salary BETWEEN 50000 AND 65000;
+
+
