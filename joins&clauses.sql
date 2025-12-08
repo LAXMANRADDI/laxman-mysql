@@ -81,3 +81,49 @@ emp_id   name  department  salary  join_year
  3      Arjun  IT          70000   2021      
  4      Priya  Sales       45000   2024      
  5      Karan  HR          55000   2022      
+
+
+1. SELECT
+Used to choose columns.
+SELECT name, salary
+FROM employees;
+
+2. FROM
+Specifies table.
+SELECT *
+FROM employees;
+
+3. WHERE
+
+Filters rows before grouping.
+SELECT *
+FROM employees
+WHERE salary > 55000;
+
+Possible Error :
+Correct: salary > 55000
+Wrong: WHERE AVG(salary) > 55000
+Why? → Aggregate functions not allowed in WHERE.
+
+ 4. ORDER BY
+Sorts rows.
+SELECT name, salary
+FROM employees
+ORDER BY salary DESC
+Error: Ordering a column not in SELECT is allowed in MySQL — no error.
+
+ 5. GROUP BY
+Groups rows based on a column.
+SELECT department, AVG(salary)
+FROM employees
+GROUP BY department;
+
+Error :
+This will ERROR in strict SQL databases:
+
+SELECT name, department
+FROM employees
+GROUP BY department;
+
+Because name is not aggregated.
+MySQL may allow depending on mode, but considered WRONG
