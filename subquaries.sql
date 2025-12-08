@@ -177,3 +177,11 @@ Inner query depends on outer row → correlated.
 
 Outer Row → Inner query runs (uses outer row value) → Returns result → Outer query checks condition → Goes to next row → Inner query runs again →
 ...
+
+ Feature     Non-Correlated                       Correlated                         
+ Dependency  Does NOT depend on outer query       Depends on outer query             
+ Execution   Inner query runs first ONCE          Inner query runs MULTIPLE times    
+ Speed       Faster                               Slower                             
+ Use-case    Fixed comparison                     Row-by-row comparison              
+ References  Inner query uses only its own table  Inner query references outer table 
+
