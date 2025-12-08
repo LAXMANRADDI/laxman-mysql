@@ -140,3 +140,40 @@ WHERE dept_id IN (
 );
 
 --> Inner Query Runs Independently -->Result Returned -->Outer Query Uses That Result
+
+
+CORRELATED SUBQUERY (Dependent Subquery)
+Definition
+A correlated subquery depends on the outer query.
+It runs again for every row of the outer query.
+
+Key Points
+Inner query uses a column from the outer query.
+Inner query executes multiple times (once per row).
+Slower than non-correlated subqueries.
+Used for row-by-row comparison.
+
+Example : Find employees whose salary is above the average salary of their department
+SELECT e1.name, e1.salary, e1.dept_id
+FROM employees e1
+WHERE e1.salary > (
+    SELECT AVG(e2.salary)
+    FROM employees e2
+    WHERE e1.dept_id = e2.dept_id
+);
+
+Here, e1.dept_id is from outer query → dependency.
+
+Example : Find employees who earn the highest salary in their department
+SELECT e1.name, e1.salary, e1.dept_id
+FROM employees e1
+WHERE e1.salary = (
+    SELECT MAX(e2.salary)
+    FROM employees e2
+    WHERE e1.dept_id = e2.dept_id
+);
+
+Inner query depends on outer row → correlated.
+
+Outer Row → Inner query runs (uses outer row value) → Returns result → Outer query checks condition → Goes to next row → Inner query runs again →
+...
