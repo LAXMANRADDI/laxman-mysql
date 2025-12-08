@@ -231,3 +231,12 @@ UNION ALL
 SELECT head FROM departments;
 
 
+using multiple clauses :::
+SELECT department, COUNT(*) AS total, AVG(salary) AS avg_sal
+FROM employees
+WHERE salary > 50000
+GROUP BY department
+HAVING AVG(salary) > 55000
+ORDER BY avg_sal DESC
+LIMIT 2;
+
