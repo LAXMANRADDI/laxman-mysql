@@ -108,3 +108,35 @@ WHERE salary IN (
     FROM employees
     GROUP BY department
 );
+
+
+CORELATED NON-CORELATED SUBQUARIES::
+1. NON-CORRELATED SUBQUERY (Independent Subquery)
+Definition
+A non-correlated subquery is a subquery that does NOT depend on the outer query.
+It runs independently, returns a result, and then the outer query uses that result.
+
+Key Points
+Inner query executes first.
+Inner query does not reference any column from the outer query.
+Result of inner query is fixed for the outer query.
+Faster and commonly used.
+
+Example : USING =
+Find employees who earn the maximum salary
+SELECT name, salary
+FROM employees
+WHERE salary = (
+    SELECT MAX(salary)
+    FROM employees
+);
+
+Example : USING IN
+Find employees who work in departments located in 'Bangalore'
+SELECT name
+FROM employees
+WHERE dept_id IN (
+    SELECT dept_id FROM departments WHERE location = 'Bangalore'
+);
+
+--> Inner Query Runs Independently -->Result Returned -->Outer Query Uses That Result
