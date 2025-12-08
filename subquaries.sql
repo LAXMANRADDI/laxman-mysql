@@ -6,3 +6,13 @@ FROM employees
 WHERE salary > (
     SELECT AVG(salary) FROM employees
 );
+
+2. Subquery in SELECT
+Compare each salary with the overall average
+SELECT 
+    name,
+    salary,
+    (SELECT AVG(salary) FROM employees) AS avg_salary
+FROM employees;
+✔ Useful for analytics
+✔ Subquery returns 1 value used in every row
