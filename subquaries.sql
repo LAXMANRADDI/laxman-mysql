@@ -292,3 +292,15 @@ WHERE salary = (
     SELECT AVG(salary)
     FROM employees
 );
+
+8. Row Subquery
+Returns multiple columns.
+Example
+Find employees whose (dept, salary) matches Mani
+SELECT name
+FROM employees
+WHERE (dept_id, salary) = (
+    SELECT dept_id, salary
+    FROM employees
+    WHERE name = 'Mani'
+);
