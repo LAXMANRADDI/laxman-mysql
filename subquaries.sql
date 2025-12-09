@@ -259,3 +259,8 @@ WHERE salary > ANY (
     FROM employees
     WHERE dept_id = 10
 );
+
+Dept 10 salaries = {50,000, 70,000}
+salary > ANY means:
+salary > 50,000 OR salary > 70,000
+So salaries > 50,000 qualify.
