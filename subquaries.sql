@@ -264,3 +264,20 @@ Dept 10 salaries = {50,000, 70,000}
 salary > ANY means:
 salary > 50,000 OR salary > 70,000
 So salaries > 50,000 qualify.
+
+6. Subquery with ALL
+ALL means condition must be true for ALL values.
+Example
+Find employees earning more than everyone in dept 10:
+SELECT name
+FROM employees
+WHERE salary > ALL (
+    SELECT salary
+    FROM employees
+    WHERE dept_id = 10
+);
+
+Dept 10 salaries = {50,000, 70,000}
+salary > ALL means:
+salary > 50,000 AND salary > 70,000
+Only 90,000 fits.
