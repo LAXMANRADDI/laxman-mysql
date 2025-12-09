@@ -207,3 +207,16 @@ WHERE dept_id IN (
     GROUP BY dept_id
     HAVING AVG(salary) > 60000
 );
+
+2. Subquery with NOT IN
+Opposite of IN.
+Example
+Find employees not working in highly paid departments
+SELECT name
+FROM employees
+WHERE dept_id NOT IN (
+    SELECT dept_id
+    FROM employees
+    GROUP BY dept_id
+    HAVING AVG(salary) > 60000
+);
