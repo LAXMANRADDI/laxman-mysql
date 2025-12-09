@@ -185,3 +185,25 @@ Outer Row → Inner query runs (uses outer row value) → Returns result → Out
  Use-case    Fixed comparison                     Row-by-row comparison              
  References  Inner query uses only its own table  Inner query references outer table 
 
+
+master table for following subquaries::::::::: 
+| emp_id | name | dept_id | salary |
+| ------ | ---- | ------- | ------ |
+| 1      | Asha | 10      | 50,000 |
+| 2      | Ravi | 10      | 70,000 |
+| 3      | Janu | 20      | 60,000 |
+| 4      | Mani | 20      | 90,000 |
+| 5      | Riya | 20      | 40,000 |
+
+1. Subquery with IN
+Used when the subquery returns multiple values.
+Example
+Find employees in departments where average salary > 60,000
+SELECT name
+FROM employees
+WHERE dept_id IN (
+    SELECT dept_id
+    FROM employees
+    GROUP BY dept_id
+    HAVING AVG(salary) > 60000
+);
