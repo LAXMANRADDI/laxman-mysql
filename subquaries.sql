@@ -220,3 +220,17 @@ WHERE dept_id NOT IN (
     GROUP BY dept_id
     HAVING AVG(salary) > 60000
 );
+
+3. Subquery with EXISTS (Correlated)
+EXISTS checks if subquery returns at least one row.
+Example
+Find departments that have employees earning above 80,000
+SELECT DISTINCT dept_id
+FROM employees e1
+WHERE EXISTS (
+    SELECT *
+    FROM employees e2
+    WHERE e2.dept_id = e1.dept_id
+      AND e2.salary > 80000
+);
+-->Inner query depends on outer → correlated
