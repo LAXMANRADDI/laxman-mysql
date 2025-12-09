@@ -234,3 +234,16 @@ WHERE EXISTS (
       AND e2.salary > 80000
 );
 -->Inner query depends on outer → correlated
+
+4. Subquery with NOT EXISTS
+Opposite of EXISTS.
+Example
+Find departments where no one earns above 80,000
+SELECT DISTINCT dept_id
+FROM employees e1
+WHERE NOT EXISTS (
+    SELECT *
+    FROM employees e2
+    WHERE e2.dept_id = e1.dept_id
+      AND e2.salary > 80000
+);
