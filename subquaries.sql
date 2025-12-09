@@ -281,3 +281,14 @@ Dept 10 salaries = {50,000, 70,000}
 salary > ALL means:
 salary > 50,000 AND salary > 70,000
 Only 90,000 fits.
+
+7. Scalar Subquery (returns 1 value)
+Always returns exact one value.
+Example
+Find employees whose salary = the overall average salary
+SELECT name
+FROM employees
+WHERE salary = (
+    SELECT AVG(salary)
+    FROM employees
+);
