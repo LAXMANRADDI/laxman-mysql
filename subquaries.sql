@@ -247,3 +247,15 @@ WHERE NOT EXISTS (
     WHERE e2.dept_id = e1.dept_id
       AND e2.salary > 80000
 );
+
+5. Subquery with ANY
+ANY means at least one value satisfies the condition.
+Example
+Find employees with salary greater than ANY salary of dept 10
+SELECT name
+FROM employees
+WHERE salary > ANY (
+    SELECT salary
+    FROM employees
+    WHERE dept_id = 10
+);
