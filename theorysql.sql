@@ -208,32 +208,24 @@ Then DB updates the actual table.
 | Crash recovery | YES          |
 
 ---
-
-# 🔥 7. WAL + Buffer Management (Steal & Force)
-
+7. WAL + Buffer Management (Steal & Force)
 This is VERY important for exams.
 
-## ✔ STEAL
-
+## STEAL
 Uncommitted data **may be written** to disk.
-
 * Allows DB to free buffer memory
 * But requires **UNDO logging** (to undo uncommitted data during crash)
-
-✔ Used by most DBs (InnoDB)
+Used by most DBs (InnoDB)
 
 ---
 
-## ✔ FORCE
-
+##  FORCE
 On COMMIT, all modified pages **must be written** to disk.
-
 * Makes recovery easier
 * Slow performance
 * Not used in modern DBs
-
-⛔ MySQL InnoDB does NOT use FORCE
-✔ It uses WAL + REDO logs instead.
+ MySQL InnoDB does NOT use FORCE
+ It uses WAL + REDO logs instead.
 
 ---
 8. WAL with Checkpoints
