@@ -106,71 +106,47 @@ Undo → rollback
 Redo → crash recovery
 
 ---
-# 1. What is Write-Ahead Logging?
-
-**WAL means:
+# 1.Write-Ahead Logging
 “A database must ALWAYS write log records *before* writing the actual data to disk.”**
-
 This rule ensures:
 * **Atomicity** (rollback possible)
 * **Durability** (committed data survives crash)
 * **Consistency** (no partial writes)
 ---
-#  2. Why WAL is needed?
+#  2. Why WAL
 Without WAL:
 * If DB crashes mid-update → data becomes half updated
 * No undo information → rollback impossible
 * No redo information → committed transactions lost
-
-WAL prevents all these.
-
 ---
-
 #  3. WAL Basic Rule
-
 For every UPDATE/DELETE/INSERT:
-
-### Step 1:
-
+Step 1:
 Write **log record** (undo + redo) → *disk*
-
-### Step 2:
-
-Write **actual modified data** → buffer → disk later
-
-### Step 3:
-
+Step 2:
+Write  actual modified data** → buffer → disk later
+Step 3:
 On COMMIT, write “commit record” → log
-
 This ensures recovery.
-
 ---
-
-#  4. WAL Log Contains
-**UNDO Information**
+#4. WAL Log Contains
+UNDO Information
 Old value — used to roll back uncommitted changes.
-### 👉 **REDO Information**
+  
+REDO Information
 New value — used to redo committed changes after crash.
 ---
-#  5. WAL Example (Simple)
+5. WAL Example (Simple)
 Query:
 ```sql
 UPDATE emp SET salary = 50000 WHERE emp_id = 100;
- What DB writes:
-**Undo log**
-```
-(emp_id=100, old_salary=30000)
-```
-### **Redo log**
-```
-(emp_id=100, new_salary=50000)
-```
-Then DB updates the actual table.
 
----
+What DB writes:
+Undo log i.e (emp_id=100, old_salary=30000)
 
-#  6. WAL Benefits
-
+Redo log  i.e (emp_id=100, new_salary=50000)
+  
+#6. WAL Benefits
 | Feature        | WAL Provides |
 | -------------- | ------------ |
 | Atomicity      | YES          |
@@ -183,14 +159,12 @@ Then DB updates the actual table.
 7. WAL + Buffer Management (Steal & Force)
 This is VERY important for exams.
 
-## STEAL
+STEAL
 Uncommitted data **may be written** to disk.
 * Allows DB to free buffer memory
 * But requires **UNDO logging** (to undo uncommitted data during crash)
 Used by most DBs (InnoDB)
-
----
-
+--
 ##  FORCE
 On COMMIT, all modified pages **must be written** to disk.
 * Makes recovery easier
