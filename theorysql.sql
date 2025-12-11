@@ -236,31 +236,14 @@ On COMMIT, all modified pages **must be written** to disk.
 ✔ It uses WAL + REDO logs instead.
 
 ---
-
-# 🔥 8. WAL with Checkpoints
-
+8. WAL with Checkpoints
 Checkpoints are places where DB writes:
-
 * all dirty pages to disk
 * checkpoint record to logs
 
 Purpose:
-
 * speed up recovery
 * reduce redo work after crash
 
----
-
-# ⭐ NEXT HUGE TOPIC (VTU / DBMS exam favorite):
-
-**UNDO Logging vs REDO Logging vs UNDO/REDO Logging**
-
-I will explain:
-
-✔ Difference
-✔ How each performs recovery
-✔ Which one supports steal/force
-✔ Diagrams
-✔ Examples
 
 
