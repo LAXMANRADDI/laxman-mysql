@@ -108,13 +108,13 @@ Redo → crash recovery
 
 Great — now we go deeper into the core DBMS logging system:
 
-# ⭐ **WRITE-AHEAD LOGGING (WAL) — Deep Explanation (VTU Important)**
+# **WRITE-AHEAD LOGGING (WAL) — Deep Explanation (VTU Important)**
 
 This is the *foundation* of logged operations.
 
 ---
 
-# 🔥 1. What is Write-Ahead Logging?
+# 1. What is Write-Ahead Logging?
 
 **WAL means:
 “A database must ALWAYS write log records *before* writing the actual data to disk.”**
@@ -126,8 +126,7 @@ This rule ensures:
 * **Consistency** (no partial writes)
 
 ---
-
-# 🔥 2. Why WAL is needed?
+#  2. Why WAL is needed?
 
 Without WAL:
 
@@ -139,7 +138,7 @@ WAL prevents all these.
 
 ---
 
-# 🔥 3. WAL Basic Rule
+#  3. WAL Basic Rule
 
 For every UPDATE/DELETE/INSERT:
 
@@ -159,7 +158,7 @@ This ensures recovery.
 
 ---
 
-# 🔥 4. WAL Log Contains
+#  4. WAL Log Contains
 
 ### 👉 **UNDO Information**
 
