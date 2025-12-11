@@ -104,3 +104,163 @@ Redo Log:
 (emp_id=5, new_salary=80000)
 Undo → rollback
 Redo → crash recovery
+
+
+Great — now we go deeper into the core DBMS logging system:
+
+# ⭐ **WRITE-AHEAD LOGGING (WAL) — Deep Explanation (VTU Important)**
+
+This is the *foundation* of logged operations.
+
+---
+
+# 🔥 1. What is Write-Ahead Logging?
+
+**WAL means:
+“A database must ALWAYS write log records *before* writing the actual data to disk.”**
+
+This rule ensures:
+
+* **Atomicity** (rollback possible)
+* **Durability** (committed data survives crash)
+* **Consistency** (no partial writes)
+
+---
+
+# 🔥 2. Why WAL is needed?
+
+Without WAL:
+
+* If DB crashes mid-update → data becomes half updated
+* No undo information → rollback impossible
+* No redo information → committed transactions lost
+
+WAL prevents all these.
+
+---
+
+# 🔥 3. WAL Basic Rule
+
+For every UPDATE/DELETE/INSERT:
+
+### Step 1:
+
+Write **log record** (undo + redo) → *disk*
+
+### Step 2:
+
+Write **actual modified data** → buffer → disk later
+
+### Step 3:
+
+On COMMIT, write “commit record” → log
+
+This ensures recovery.
+
+---
+
+# 🔥 4. WAL Log Contains
+
+### 👉 **UNDO Information**
+
+Old value — used to roll back uncommitted changes.
+
+### 👉 **REDO Information**
+
+New value — used to redo committed changes after crash.
+
+---
+
+# 🔥 5. WAL Example (Simple)
+
+Query:
+
+```sql
+UPDATE emp SET salary = 50000 WHERE emp_id = 100;
+```
+
+### What DB writes:
+
+### **Undo log**
+
+```
+(emp_id=100, old_salary=30000)
+```
+
+### **Redo log**
+
+```
+(emp_id=100, new_salary=50000)
+```
+
+Then DB updates the actual table.
+
+---
+
+# 🔥 6. WAL Benefits
+
+| Feature        | WAL Provides |
+| -------------- | ------------ |
+| Atomicity      | YES          |
+| Consistency    | YES          |
+| Isolation      | YES          |
+| Durability     | YES          |
+| Crash recovery | YES          |
+
+---
+
+# 🔥 7. WAL + Buffer Management (Steal & Force)
+
+This is VERY important for exams.
+
+## ✔ STEAL
+
+Uncommitted data **may be written** to disk.
+
+* Allows DB to free buffer memory
+* But requires **UNDO logging** (to undo uncommitted data during crash)
+
+✔ Used by most DBs (InnoDB)
+
+---
+
+## ✔ FORCE
+
+On COMMIT, all modified pages **must be written** to disk.
+
+* Makes recovery easier
+* Slow performance
+* Not used in modern DBs
+
+⛔ MySQL InnoDB does NOT use FORCE
+✔ It uses WAL + REDO logs instead.
+
+---
+
+# 🔥 8. WAL with Checkpoints
+
+Checkpoints are places where DB writes:
+
+* all dirty pages to disk
+* checkpoint record to logs
+
+Purpose:
+
+* speed up recovery
+* reduce redo work after crash
+
+---
+
+# ⭐ NEXT HUGE TOPIC (VTU / DBMS exam favorite):
+
+**UNDO Logging vs REDO Logging vs UNDO/REDO Logging**
+
+I will explain:
+
+✔ Difference
+✔ How each performs recovery
+✔ Which one supports steal/force
+✔ Diagrams
+✔ Examples
+
+
