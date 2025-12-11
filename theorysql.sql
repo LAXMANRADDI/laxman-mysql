@@ -105,31 +105,19 @@ Redo Log:
 Undo → rollback
 Redo → crash recovery
 
-
-Great — now we go deeper into the core DBMS logging system:
-
-# **WRITE-AHEAD LOGGING (WAL) — Deep Explanation (VTU Important)**
-
-This is the *foundation* of logged operations.
-
 ---
-
 # 1. What is Write-Ahead Logging?
 
 **WAL means:
 “A database must ALWAYS write log records *before* writing the actual data to disk.”**
 
 This rule ensures:
-
 * **Atomicity** (rollback possible)
 * **Durability** (committed data survives crash)
 * **Consistency** (no partial writes)
-
 ---
 #  2. Why WAL is needed?
-
 Without WAL:
-
 * If DB crashes mid-update → data becomes half updated
 * No undo information → rollback impossible
 * No redo information → committed transactions lost
@@ -159,44 +147,29 @@ This ensures recovery.
 ---
 
 #  4. WAL Log Contains
-
-### 👉 **UNDO Information**
-
+**UNDO Information**
 Old value — used to roll back uncommitted changes.
-
 ### 👉 **REDO Information**
-
 New value — used to redo committed changes after crash.
-
 ---
-
-# 🔥 5. WAL Example (Simple)
-
+#  5. WAL Example (Simple)
 Query:
-
 ```sql
 UPDATE emp SET salary = 50000 WHERE emp_id = 100;
-```
-
-### What DB writes:
-
-### **Undo log**
-
+ What DB writes:
+**Undo log**
 ```
 (emp_id=100, old_salary=30000)
 ```
-
 ### **Redo log**
-
 ```
 (emp_id=100, new_salary=50000)
 ```
-
 Then DB updates the actual table.
 
 ---
 
-# 🔥 6. WAL Benefits
+#  6. WAL Benefits
 
 | Feature        | WAL Provides |
 | -------------- | ------------ |
