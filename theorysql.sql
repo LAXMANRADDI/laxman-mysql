@@ -185,3 +185,135 @@ Purpose:
 
 
 
+---
+
+1. ARIES 
+
+Earlier logging techniques had problems:
+Slow recovery
+Force writes
+Limited buffer policies
+
+
+ARIES solves this by supporting: ✔ STEAL (write uncommitted pages to disk)
+NO-FORCE (don’t force pages at commit)
+Fast crash recovery
+
+
+---
+2. Core Ideas of ARIES
+ARIES is based on UNDO/REDO logging and WAL.
+Three big ideas:
+1. Log everything (before & after images)
+2. Repeat history during RED
+3. Undo losers at the end
+
+---
+3. Important ARIES Components
+Log Sequence Number (LSN)
+Every log record has a unique number.
+Each data page stores the LSN of last update.
+
+
+
+---
+
+Transaction Table (TT)
+Tracks:
+Active transactions
+Last LSN of each transaction
+Transaction status (active, committed)
+
+
+
+---
+Dirty Page Table (DPT)
+Tracks:
+Pages modified but not yet written to disk
+Stores recLSN (first LSN that dirtied the page)
+--
+ 4. ARIES Recovery = 3 Phases
+
+CRASH
+  ↓
+ANALYSIS
+  ↓
+REDO
+  ↓
+UNDO
+
+---
+PHASE 1: ANALYSIS
+Purpose:
+Identify winner and loser transactions
+Reconstruct Transaction Table & Dirty Page Table
+What happens:
+Scan log forward from last checkpoint
+Fill TT & DPT
+
+Output:
+Winners → committed
+Losers → active/uncommitted
+
+---
+
+ PHASE 2: REDO (Repeat History)
+Purpose:
+Reapply all changes (even uncommitted ones!)
+Rule:
+Redo log record only if:
+Page is in DPT AND
+Log LSN ≥ recLSN AND
+PageLSN < LogLSN
+
+
+ redo uncommitted: Because DB wants to repeat history exactly.
+
+
+---
+PHASE 3: UNDO
+Purpose:
+Roll back loser transactions
+Undo in reverse LSN order
+Use UNDO info (old values)
+Write Compensation Log Records (CLR)
+
+
+CLR:
+Records that an undo has happened
+Ensures idempotency (safe if crash happens again)
+
+
+---
+
+5. Simple ARIES Example
+Transactions:
+T1: UPDATE A
+T2: UPDATE B
+T1: COMMIT
+CRASH
+
+Analysis:
+T1 → Winner
+T2 → Loser
+
+
+Redo:
+Redo T1 and T2 updates
+
+
+Undo:
+Undo T2 using old value
+Write CLR
+
+
+--
+6. Feature	ARIES
+Supports STEAL	
+Supports NO FORCE	
+Fast Recovery	
+Handles repeated crashes	
+Used in real DBs	
+
+
+
