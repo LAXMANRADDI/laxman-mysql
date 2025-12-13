@@ -214,8 +214,6 @@ Log Sequence Number (LSN)
 Every log record has a unique number.
 Each data page stores the LSN of last update.
 
-
-
 ---
 
 Transaction Table (TT)
@@ -223,8 +221,6 @@ Tracks:
 Active transactions
 Last LSN of each transaction
 Transaction status (active, committed)
-
-
 
 ---
 Dirty Page Table (DPT)
