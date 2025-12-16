@@ -311,5 +311,120 @@ Fast Recovery
 Handles repeated crashes	
 Used in real DBs	
 
+PART 1: TRANSACTION STATES
 
+A transaction = a sequence of database operations that must be executed as a single unit.
+
+🟦 1. Active
+
+Transaction is currently executing.
+
+START TRANSACTION
+  ↓
+Active
+
+
+Example:
+
+UPDATE accounts SET balance = balance - 1000 WHERE id = 1;
+
+🟨 2. Partially Committed
+
+All statements executed, but not yet permanently saved.
+
+Last SQL executed
+→ waiting for COMMIT to be written to log
+
+
+Crash here → rollback possible.
+
+🟩 3. Committed
+
+Transaction successfully completed.
+
+COMMIT;
+
+
+Changes are permanent.
+
+🟥 4. Failed
+
+Transaction cannot continue due to:
+
+system crash
+
+constraint violation
+
+deadlock
+
+🟪 5. Aborted
+
+Transaction is rolled back.
+
+ROLLBACK;
+
+
+DB returns to previous consistent state.
+
+🟫 6. Terminated
+
+Transaction leaves the system after commit/abort.
+Transaction State Diagram (Exam-friendly)
+Active
+  ↓
+Partially Committed
+  ↓
+Committed → Terminated
+  ↓
+Failed → Aborted → Terminated
+PART 2: ACID PROPERTIES
+ACID ensures reliable transactions.
+Atomicity
+All or nothing.
+Example:
+UPDATE A;
+UPDATE B;
+If second fails → first must rollback.
+Supported by:
+UNDO logs
+WAL
+
+🅲 Consistency
+
+Transaction moves DB from one valid state to another.
+
+Example:
+
+Total bank balance must remain same after transfer.
+
+Isolation
+Each transaction executes as if alone.
+Example:
+Two users updating same row simultaneously should not corrupt data.
+Handled by:
+Locks
+MVCC
+Durability
+  
+Once committed → changes survive crashes.
+Handled by:
+REDO logs
+WAL
+ARIES
+ACID Summary Table
+Property	Ensures	Achieved by
+Atomicity	No partial execution	UNDO logs
+Consistency	DB rules preserved	Constraints
+Isolation	No interference	Locks/MVCC
+Durability	Data survives crash	REDO + WAL
+Real-Life Example (Bank Transfer)
+T1:
+Withdraw 500 from A
+Deposit 500 to B
+
+
+Atomicity → both happen or none
+Consistency → total money same
+Isolation → no interference
+Durability → survives crash
 
