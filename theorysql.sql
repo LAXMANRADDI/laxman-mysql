@@ -376,3 +376,106 @@ Consistency → total money same
 Isolation → no interference
 Durability → survives crash
 
+
+---
+Concurrency 
+**Concurrency control** ensures that:
+* Multiple transactions can run **at the same time**
+* Database remains **correct and consistent**
+Without it:
+* Data becomes inconsistent
+* Wrong results occur
+--
+2. Why Concurrency 
+Example (Bank balance = 1000)
+```
+T1: Read balance (1000)
+T2: Read balance (1000)
+T1: -100 → writes 900
+T2: -200 → writes 800   ❌ WRONG
+```
+Correct balance should be **700**, but result is **800**
+→ This is a **Lost Update problem**
+
+---
+3. Common Concurrency Problems
+# Lost Update
+Two transactions overwrite each other.
+# Dirty Read
+ 
+Read uncommitted data.
+# Non-Repeatable Read
+Same row read twice → different values.
+# Phantom Read
+New rows appear in same query.
+---
+4. Lock-Based Concurrency Control
+A  lock prevents others from accessing data incorrectly.
+---
+Types of Locks
+Shared Lock (S)
+* Read only
+* Many transactions can hold S lock
+
+``sql
+SELECT ... LOCK IN SHARE MODE;
+---
+🔹Exclusive Lock (X)
+* Read + Write
+* Only one transaction allowed
+
+```sql
+SELECT ... FOR UPDATE;
+---
+ 5. Two-Phase Locking (2PL) — VERY IMPORTANT
+Rule:
+A transaction has **two phases**:
+Growing phase
+* Locks can be acquired
+* No locks released
+
+️Shrinking phase
+* Locks released
+* No new locks acquired
+This guarantees *serializability
+ Example:
+T1:
+LOCK A
+LOCK B
+UNLOCK A
+UNLOCK B
+Correct 2PL
+---
+6. Strict 2PL (Used in Real DBs)
+Rule:
+* Hold all X locks till COMMIT or ROLLBACK
+Benefits:
+* Prevents dirty reads
+* Simplifies recovery
+Used by MySQL InnoDB
+---
+7. Deadlocks
+T1 holds A → waits for B
+T2 holds B → waits for A
+```
+Neither can proceed 
+---
+Deadlock Handling
+  
+Detection
+DB periodically checks wait-for graph
+# Prevention
+* Timestamp ordering
+* Wait-die / Wound-wait
+# Recovery
+* Abort one transaction
+---
+8. Isolation Levels (Preview)
+ Level              Dirty Read  Non-Repeatable    Phantom 
+REAL UNCOMMITTED   ✔            ✔                ✔       
+READ COMMITTED     ❌           ✔                ✔       
+REPEATABLE READ    ❌           ❌               ✔       
+SERIALIZABLE       ❌           ❌               ❌       
+(MySQL default = REPEATABLE READ)
+
+
