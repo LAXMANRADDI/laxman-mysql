@@ -109,9 +109,9 @@ Redo → crash recovery
 # 1.Write-Ahead Logging
 “A database must ALWAYS write log records *before* writing the actual data to disk.”**
 This rule ensures:
-* **Atomicity** (rollback possible)
-* **Durability** (committed data survives crash)
-* **Consistency** (no partial writes)
+*Atomicity(rollback possible)
+*Durability (committed data survives crash)
+*Consistency (no partial writes)
 ---
 #  2. Why WAL
 Without WAL:
@@ -143,9 +143,7 @@ UPDATE emp SET salary = 50000 WHERE emp_id = 100;
 
 What DB writes:
 Undo log i.e (emp_id=100, old_salary=30000)
-
 Redo log  i.e (emp_id=100, new_salary=50000)
-  
 #6. WAL Benefits
 | Feature        | WAL Provides |
 | -------------- | ------------ |
@@ -165,14 +163,13 @@ Uncommitted data **may be written** to disk.
 * But requires **UNDO logging** (to undo uncommitted data during crash)
 Used by most DBs (InnoDB)
 --
-##  FORCE
-On COMMIT, all modified pages **must be written** to disk.
+##FORCE
+On COMMIT, all modified pages *must be written* to disk.
 * Makes recovery easier
 * Slow performance
 * Not used in modern DBs
  MySQL InnoDB does NOT use FORCE
  It uses WAL + REDO logs instead.
-
 ---
 8. WAL with Checkpoints
 Checkpoints are places where DB writes:
@@ -182,9 +179,6 @@ Checkpoints are places where DB writes:
 Purpose:
 * speed up recovery
 * reduce redo work after crash
-
-
-
 ---
 
 1. ARIES 
