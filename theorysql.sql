@@ -1,4 +1,4 @@
-1. LOGGED OPERATION (With Logging / Write-Ahead Logging)
+ 1. LOGGED OPERATION (With Logging / Write-Ahead Logging)
 A logged operation is one where the database records the action in a log file (transaction log) before executing it.
 This is called Write-Ahead Logging (WAL).
 
@@ -192,8 +192,6 @@ Limited buffer policies
 ARIES solves this by supporting: STEAL (write uncommitted pages to disk)
 NO-FORCE (don’t force pages at commit)
 Fast crash recovery
-
-
 ---
 2. Core Ideas of ARIES
 ARIES is based on UNDO/REDO logging and WAL.
@@ -257,8 +255,6 @@ Roll back loser transactions
 Undo in reverse LSN order
 Use UNDO info (old values)
 Write Compensation Log Records (CLR)
-
-
 CLR:
 Records that an undo has happened
 Ensures idempotency (safe if crash happens again)
@@ -293,60 +289,37 @@ Used in real DBs
 PART 1: TRANSACTION STATES
 
 A transaction = a sequence of database operations that must be executed as a single unit.
-
-🟦 1. Active
-
+1. Active
 Transaction is currently executing.
-
 START TRANSACTION
   ↓
 Active
-
-
 Example:
-
 UPDATE accounts SET balance = balance - 1000 WHERE id = 1;
 
-🟨 2. Partially Committed
-
+2. Partially Committed
 All statements executed, but not yet permanently saved.
-
 Last SQL executed
 → waiting for COMMIT to be written to log
-
-
 Crash here → rollback possible.
-
-🟩 3. Committed
-
+  
+3. Committed
 Transaction successfully completed.
-
 COMMIT;
-
-
 Changes are permanent.
 
-🟥 4. Failed
-
+4. Failed
 Transaction cannot continue due to:
-
 system crash
-
 constraint violation
-
 deadlock
 
-🟪 5. Aborted
-
+5. Aborted
 Transaction is rolled back.
-
 ROLLBACK;
-
-
 DB returns to previous consistent state.
 
-🟫 6. Terminated
-
+6. Terminated
 Transaction leaves the system after commit/abort.
 Transaction State Diagram (Exam-friendly)
 Active
@@ -356,6 +329,7 @@ Partially Committed
 Committed → Terminated
   ↓
 Failed → Aborted → Terminated
+  
 PART 2: ACID PROPERTIES
 ACID ensures reliable transactions.
 Atomicity
@@ -368,14 +342,10 @@ Supported by:
 UNDO logs
 WAL
 
-🅲 Consistency
-
+Consistency
 Transaction moves DB from one valid state to another.
-
 Example:
-
 Total bank balance must remain same after transfer.
-
 Isolation
 Each transaction executes as if alone.
 Example:
