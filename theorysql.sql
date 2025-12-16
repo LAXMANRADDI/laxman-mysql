@@ -107,7 +107,7 @@ Redo → crash recovery
 
 ---
 # 1.Write-Ahead Logging
-“A database must ALWAYS write log records *before* writing the actual data to disk.”**
+“A database must ALWAYS write log records *before* writing the actual data to disk.”
 This rule ensures:
 *Atomicity(rollback possible)
 *Durability (committed data survives crash)
@@ -189,7 +189,7 @@ Force writes
 Limited buffer policies
 
 
-ARIES solves this by supporting: ✔ STEAL (write uncommitted pages to disk)
+ARIES solves this by supporting: STEAL (write uncommitted pages to disk)
 NO-FORCE (don’t force pages at commit)
 Fast crash recovery
 
@@ -207,15 +207,12 @@ Three big ideas:
 Log Sequence Number (LSN)
 Every log record has a unique number.
 Each data page stores the LSN of last update.
-
 ---
-
 Transaction Table (TT)
 Tracks:
 Active transactions
 Last LSN of each transaction
 Transaction status (active, committed)
-
 ---
 Dirty Page Table (DPT)
 Tracks:
