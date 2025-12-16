@@ -223,7 +223,6 @@ Pages modified but not yet written to disk
 Stores recLSN (first LSN that dirtied the page)
 --
  4. ARIES Recovery = 3 Phases
-
 CRASH
   ↓
 ANALYSIS
@@ -231,7 +230,6 @@ ANALYSIS
 REDO
   ↓
 UNDO
-
 ---
 PHASE 1: ANALYSIS
 Purpose:
@@ -245,9 +243,8 @@ Output:
 Winners → committed
 Losers → active/uncommitted
 
----
-
- PHASE 2: REDO (Repeat History)
+-
+PHASE 2: REDO (Repeat History)
 Purpose:
 Reapply all changes (even uncommitted ones!)
 Rule:
