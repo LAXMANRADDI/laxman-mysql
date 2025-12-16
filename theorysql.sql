@@ -371,7 +371,6 @@ T1:
 Withdraw 500 from A
 Deposit 500 to B
 
-
 Atomicity → both happen or none
 Consistency → total money same
 Isolation → no interference
