@@ -249,11 +249,7 @@ Redo log record only if:
 Page is in DPT AND
 Log LSN ≥ recLSN AND
 PageLSN < LogLSN
-
-
- redo uncommitted: Because DB wants to repeat history exactly.
-
-
+redo uncommitted: Because DB wants to repeat history exactly.
 ---
 PHASE 3: UNDO
 Purpose:
@@ -266,10 +262,7 @@ Write Compensation Log Records (CLR)
 CLR:
 Records that an undo has happened
 Ensures idempotency (safe if crash happens again)
-
-
 ---
-
 5. Simple ARIES Example
 Transactions:
 T1: UPDATE A
@@ -289,8 +282,6 @@ Redo T1 and T2 updates
 Undo:
 Undo T2 using old value
 Write CLR
-
-
 --
 6. Feature	ARIES
 Supports STEAL	
